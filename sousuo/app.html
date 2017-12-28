@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <script src="zujian.js"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="root">
+    <shuru @customvent="aa" :title="title" ref="abc"></shuru>
+    <list @customvent="bb" :list="list" v-if="status==true"></list>
+</div>
+</body>
+<script>
+
+    new Vue({
+        el:"#root",
+        data:{
+            list:[1,2,3],
+            title:'',
+            status:false
+        },
+        methods:{
+            aa(){
+
+                this.status=true;
+
+            },
+            bb(val){
+                this.title=val;
+                this.status=false;
+            }
+        },
+         mounted(){
+            this.$refs['abc'].focus();
+            this.all =JSON.parse(localStorage.all);
+        }
+
+    })
+
+</script>
+</html>
